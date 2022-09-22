@@ -8,7 +8,7 @@
 
 5. Browse to the producer.py and consumer.py files in Cloud9 console on the left. Open both files and make the below changes: 
 
-6. Set your @handle as the queue in line 4 of the producer.py and line 9 of the consumer.py file e.g.@myhandle.
+6. Append your @handle as the queue in line 4 of the producer.py and line 9 of the consumer.py file e.g.@myhandle.
 
 7. Execute the producer.py in one terminal i.e. `python producer.py`.
 

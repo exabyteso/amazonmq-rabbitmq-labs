@@ -1,0 +1,2515 @@
+{
+	"info": {
+		"_postman_id": "66723d52-3f82-4785-b4f2-d7882af1a94d",
+		"name": "RabbitMQ Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6300294"
+	},
+	"item": [
+		{
+			"name": "Parameters",
+			"item": [
+				{
+					"name": "List all vhost-scoped parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/parameters",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"parameters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all vhost-scoped parameters for component",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/parameters/{{component}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"parameters",
+								"{{component}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all vhost-scoped parameters for component and virtual host",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"%2f\");",
+									"pm.variables.set(\"component\", \"federation-upstream\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/parameters/{{component}}/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"parameters",
+								"{{component}}",
+								"{{vhost}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual vhost-scoped parameter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/parameters/{{component}}/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"parameters",
+								"{{component}}",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual vhost-scoped parameter Copy 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"%2f\");",
+									"pm.variables.set(\"component\", \"federation-upstream\");",
+									"pm.variables.set(\"name\", \"my-upstream\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{broker}}/api/parameters/{{component}}/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"parameters",
+								"{{component}}",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual vhost-scoped parameter Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/parameters/{{component}}/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"parameters",
+								"{{component}}",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Virtual Hosts",
+			"item": [
+				{
+					"name": "Virtual Host Server definitions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// pm.variables.set(\"vhost\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/definitions/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"definitions",
+								"{{vhost}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual Host Server definitions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/definitions/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"definitions",
+								"{{vhost}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual host list channels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{vhost}}/channels",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{vhost}}",
+								"channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual host list consumers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/consumers/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"consumers",
+								"{{vhost}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual host list exchanges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List exchange source bindings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}/{{name}}/bindings/source",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}",
+								"{{name}}",
+								"bindings",
+								"source"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual exchange",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual exchange",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of bindings on queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/queues/{{vhost}}/{{name}}/bindings",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"{{vhost}}",
+								"{{name}}",
+								"bindings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual exchange",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual host list open connections",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{vhost}}/connections",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{vhost}}",
+								"connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List exchange destination bindings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}/{{name}}/bindings/destination",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}",
+								"{{name}}",
+								"bindings",
+								"destination"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish message to exchange",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges/{{vhost}}/{{name}}/publish",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges",
+								"{{vhost}}",
+								"{{name}}",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purge queue",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/queues/{{vhost}}/{{name}}/contents",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"{{vhost}}",
+								"{{name}}",
+								"contents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Queue actions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/queues/{{vhost}}/{{name}}/actions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"{{vhost}}",
+								"{{name}}",
+								"actions"
+							]
+						},
+						"description": "Actions that can be taken on a queue. POST a body like:\n\n``` json\n{\"action\":\"sync\"}\n```\n\nCurrently the actions which are supported are `sync` and `cancel_sync`."
+					},
+					"response": []
+				},
+				{
+					"name": "List all vhosts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts"
+							]
+						},
+						"description": "A list of all vhosts."
+					},
+					"response": []
+				},
+				{
+					"name": "Queue messages",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/queues/{{vhost}}/{{name}}/get",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"{{vhost}}",
+								"{{name}}",
+								"get"
+							]
+						},
+						"description": "Get messages from a queue. (This is not an HTTP GET as it will alter the state of the queue.) You should post a body looking like:\n\n``` json\n{\"count\":5,\"ackmode\":\"ack_requeue_true\",\"encoding\":\"auto\",\"truncate\":50000}\n```\n\n• `count` controls the maximum number of messages to get. You may get fewer messages than this if the queue cannot immediately provide them.\n\n• `ackmode` determines whether the messages will be removed from the queue. If ackmode is ack_requeue_true or reject_requeue_true they will be requeued - if ackmode is ack_requeue_false or reject_requeue_false they will be removed. \n\n• `encoding` must be either \"auto\" (in which case the payload will be returned as a string if it is valid UTF-8, and base64 encoded otherwise), or \"base64\" (in which case the payload will always be base64 encoded).\n\n• If `truncate` is present it will truncate the message payload if it is larger than the size given (in bytes).\n\n`truncate` is optional; all other keys are mandatory.\n\nPlease note that the get path in the HTTP API is intended for diagnostics etc - it does not implement reliable delivery and so should be treated as a sysadmin's tool rather than a general API for messaging."
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual host list bindings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}"
+							]
+						},
+						"description": "A list of all bindings in a given virtual host."
+					},
+					"response": []
+				},
+				{
+					"name": "List all bindings between exchange and queue",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"exchange\", \"\");",
+									"pm.variables.set(\"queue\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{exchange}}/q/{{queue}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{exchange}}",
+								"q",
+								"{{queue}}"
+							]
+						},
+						"description": "A list of all bindings between an exchange and a queue. Remember, an exchange and a queue can be bound together many times!\n\nTo create a new binding, POST to this URI. Request body should be a JSON object optionally containing two fields, routing_key (a string) and arguments (a map of optional arguments):\n\n``` json\n{\"routing_key\":\"my_routing_key\", \"arguments\":{\"x-arg\": \"value\"}}\n\n```\n\nAll keys are optional. The response will contain a Location header telling you the URI of your new binding."
+					},
+					"response": []
+				},
+				{
+					"name": "List all bindings between exchange and queue",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"exchange\", \"\");",
+									"pm.variables.set(\"queue\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{exchange}}/q/{{queue}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{exchange}}",
+								"q",
+								"{{queue}}"
+							]
+						},
+						"description": "A list of all bindings between an exchange and a queue. Remember, an exchange and a queue can be bound together many times! \n\nTo create a new binding, POST to this URI. Request body should be a JSON object optionally containing two fields, routing_key (a string) and arguments (a map of optional arguments): \n\n``` json\n{\"routing_key\":\"my_routing_key\", \"arguments\":{\"x-arg\": \"value\"}}\n```\n\nAll keys are optional. The response will contain a Location header telling you the URI of your new binding."
+					},
+					"response": []
+				},
+				{
+					"name": "Start virtual host on node",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{name}}/start/{{node}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{name}}",
+								"start",
+								"{{node}}"
+							]
+						},
+						"description": "Starts virtual host *name* on node *node*."
+					},
+					"response": []
+				},
+				{
+					"name": "Vhost topic permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{name}}/topic-permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{name}}",
+								"topic-permissions"
+							]
+						},
+						"description": "A list of all topic permissions for a given virtual host."
+					},
+					"response": []
+				},
+				{
+					"name": "Vhost permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{name}}/permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{name}}",
+								"permissions"
+							]
+						},
+						"description": "A list of all topic permissions for a given virtual host."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual Vhost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{name}}"
+							]
+						},
+						"description": "An individual virtual host. As a virtual host usually only has a name, you do not need an HTTP body when PUTing one of these. To set metadata on creation, provide a body like the following:\n\n``` json\n{\"description\":\"virtual host description\", \"tags\":\"accounts,production\"}\n\n```\n\n`tags` is a comma-separated list of tags. These metadata fields are optional. To enable / disable tracing, provide a body looking like:\n\n``` json\n{\"tracing\":true}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "List of bindings between two exchanges",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"source\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{source}}/e/destination",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{source}}",
+								"e",
+								"destination"
+							]
+						},
+						"description": "A list of all bindings between two exchanges, similar to the list of all bindings between an exchange and a queue, above.\n\nTo create a new binding, POST to this URI. Request body should be a JSON object optionally containing two fields, routing_key (a string) and arguments (a map of optional arguments):\n\n```\n{\"routing_key\":\"my_routing_key\", \"arguments\":{\"x-arg\": \"value\"}}\n\n```\n\nAll keys are optional. The response will contain a Location header telling you the URI of your new binding."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual binding between exchange and queue",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"exchange\", \"\");",
+									"pm.variables.set(\"props\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{exchange}}/q/queue/{{props}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{exchange}}",
+								"q",
+								"queue",
+								"{{props}}"
+							]
+						},
+						"description": "An individual binding between an exchange and a queue. The *props* part of the URI is a \"name\" for the binding composed of its routing key and a hash of its arguments. *props* is the field named \"properties_key\" from a bindings listing response."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual binding between exchange and queue Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"exchange\", \"\");",
+									"pm.variables.set(\"props\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{exchange}}/q/queue/{{props}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{exchange}}",
+								"q",
+								"queue",
+								"{{props}}"
+							]
+						},
+						"description": "An individual binding between an exchange and a queue. The *props* part of the URI is a \"name\" for the binding composed of its routing key and a hash of its arguments. *props* is the field named \"properties_key\" from a bindings listing response."
+					},
+					"response": []
+				},
+				{
+					"name": "List of bindings between two exchanges Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"source\", \"\");",
+									"pm.variables.set(\"destination\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{source}}/e/{{destination}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{source}}",
+								"e",
+								"{{destination}}"
+							]
+						},
+						"description": "A list of all bindings between two exchanges, similar to the list of all bindings between an exchange and a queue, above.\n\nTo create a new binding, POST to this URI. Request body should be a JSON object optionally containing two fields, routing_key (a string) and arguments (a map of optional arguments):\n\n``` json\n{\"routing_key\":\"my_routing_key\", \"arguments\":{\"x-arg\": \"value\"}}\n\n```\n\nAll keys are optional. The response will contain a `Location` header telling you the URI of your new binding."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual binding between two exchanges",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"source\", \"\");",
+									"pm.variables.set(\"destination\", \"\");",
+									"pm.variables.set(\"props\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{source}}/e/{{destination}}/{{props}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{source}}",
+								"e",
+								"{{destination}}",
+								"{{props}}"
+							]
+						},
+						"description": "A list of all bindings between two exchanges, similar to the list of all bindings between an exchange and a queue, above. \n\nTo create a new binding, POST to this URI. Request body should be a JSON object optionally containing two fields, routing_key (a string) and arguments (a map of optional arguments): \n\n``` json\n{\"routing_key\":\"my_routing_key\", \"arguments\":{\"x-arg\": \"value\"}}\n```\n\nAll keys are optional. The response will contain a `Location` header telling you the URI of your new binding."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual Vhost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{name}}"
+							]
+						},
+						"description": "An individual virtual host. As a virtual host usually only has a name, you do not need an HTTP body when PUTing one of these. To set metadata on creation, provide a body like the following:\n\n``` json\n{\"description\":\"virtual host description\", \"tags\":\"accounts,production\"}\n\n```\n\n`tags` is a comma-separated list of tags. These metadata fields are optional. To enable / disable tracing, provide a body looking like:\n\n``` json\n{\"tracing\":true}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Individual Vhost",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhosts/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhosts",
+								"{{name}}"
+							]
+						},
+						"description": "An individual virtual host. As a virtual host usually only has a name, you do not need an HTTP body when PUTing one of these. To set metadata on creation, provide a body like the following:\n\n``` json\n{\"description\":\"virtual host description\", \"tags\":\"accounts,production\"}\n\n```\n\n`tags` is a comma-separated list of tags. These metadata fields are optional. To enable / disable tracing, provide a body looking like:\n\n``` json\n{\"tracing\":true}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Lists per-vhost limits for specific vhost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhost-limits/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhost-limits",
+								"{{vhost}}"
+							]
+						},
+						"description": "Lists per-vhost limits for specific vhost."
+					},
+					"response": []
+				},
+				{
+					"name": "Set or delete per-vhost limit for vhost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhost-limits/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhost-limits",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "Set or delete per-vhost limit for vhost. The name URL path element refers to the name of the limit (max-connections, max-queues). Limits are set using a JSON document in the body:\n\n``` json\n{\"value\": 100}\n```\n\nExample request:\n\n``` bash\ncurl -4u 'guest:guest' -H 'content-type:application/json' -X PUT localhost:15672/api/vhost-limits/my-vhost/max-connections -d '{\"value\": 50}'\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Set or delete per-vhost limit for vhost Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhost-limits/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhost-limits",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "Set or delete per-vhost limit for vhost. The name URL path element refers to the name of the limit (max-connections, max-queues). Limits are set using a JSON document in the body:\n\n``` json\n{\"value\": 100}\n```\n\nExample request:\n\n``` bash\ncurl -4u 'guest:guest' -H 'content-type:application/json' -X PUT localhost:15672/api/vhost-limits/my-vhost/max-connections -d '{\"value\": 50}'\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Rebalance Queues",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/rebalance/queues",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"rebalance",
+								"queues"
+							]
+						},
+						"description": "Rebalances all queues in all vhosts. This operation is asynchronous therefore please check the RabbitMQ log file for messages regarding the success or failure of the operation.\n\n``` bash\ncurl -4u 'guest:guest' -XPOST localhost:15672/api/rebalance/queues/\n```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users and Authentication",
+			"item": [
+				{
+					"name": "Bulk delete a list of users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/users/bulk-delete",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"bulk-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/users/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{name}}"
+							]
+						},
+						"description": "An individual user. To PUT a user, you will need a body looking something like this:\n\n``` json\n{\"password\":\"secret\",\"tags\":\"administrator\"}\n\n```\n\nor:\n\n``` json\n{\"password_hash\":\"2lmoth8l4H0DViLaK9Fxi6l9ds8=\", \"tags\":\"administrator\"}\n\n```\n\nThe `tags` key is mandatory. Either `password` or `password_hash` can be set. If neither are set the user will not be able to log in with a password, but other mechanisms like client certificates may be used. Setting `password_hash` to `\"\"` will ensure the user cannot use a password to log in. tags is a comma-separated list of tags for the user. Currently recognised tags are `administrator`, `monitoring` and `management`. `password_hash` must be generated using the algorithm described [here](https://rabbitmq.com/passwords.html#computing-password-hash). You may also specify the hash function being used by adding the `hashing_algorithm` key to the body. Currently recognised algorithms are `rabbit_password_hashing_sha256`, `rabbit_password_hashing_sha512`, and `rabbit_password_hashing_md5`."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{broker}}/api/users/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{name}}"
+							]
+						},
+						"description": "An individual user. To PUT a user, you will need a body looking something like this:\n\n``` json\n{\"password\":\"secret\",\"tags\":\"administrator\"}\n\n```\n\nor:\n\n``` json\n{\"password_hash\":\"2lmoth8l4H0DViLaK9Fxi6l9ds8=\", \"tags\":\"administrator\"}\n\n```\n\nThe `tags` key is mandatory. Either `password` or `password_hash` can be set. If neither are set the user will not be able to log in with a password, but other mechanisms like client certificates may be used. Setting `password_hash` to `\"\"` will ensure the user cannot use a password to log in. tags is a comma-separated list of tags for the user. Currently recognised tags are `administrator`, `monitoring` and `management`. `password_hash` must be generated using the algorithm described [here](https://rabbitmq.com/passwords.html#computing-password-hash). You may also specify the hash function being used by adding the `hashing_algorithm` key to the body. Currently recognised algorithms are `rabbit_password_hashing_sha256`, `rabbit_password_hashing_sha512`, and `rabbit_password_hashing_md5`."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/users/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{name}}"
+							]
+						},
+						"description": "An individual user. To PUT a user, you will need a body looking something like this:\n\n``` json\n{\"password\":\"secret\",\"tags\":\"administrator\"}\n\n```\n\nor:\n\n``` json\n{\"password_hash\":\"2lmoth8l4H0DViLaK9Fxi6l9ds8=\", \"tags\":\"administrator\"}\n\n```\n\nThe `tags` key is mandatory. Either `password` or `password_hash` can be set. If neither are set the user will not be able to log in with a password, but other mechanisms like client certificates may be used. Setting `password_hash` to `\"\"` will ensure the user cannot use a password to log in. tags is a comma-separated list of tags for the user. Currently recognised tags are `administrator`, `monitoring` and `management`. `password_hash` must be generated using the algorithm described [here](https://rabbitmq.com/passwords.html#computing-password-hash). You may also specify the hash function being used by adding the `hashing_algorithm` key to the body. Currently recognised algorithms are `rabbit_password_hashing_sha256`, `rabbit_password_hashing_sha512`, and `rabbit_password_hashing_md5`."
+					},
+					"response": []
+				},
+				{
+					"name": "List users without access to a virtual host",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/users/without-permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"without-permissions"
+							]
+						},
+						"description": "A list of users that do not have access to any virtual host."
+					},
+					"response": []
+				},
+				{
+					"name": "List user's permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/users/{{user}}/permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user}}",
+								"permissions"
+							]
+						},
+						"description": "A list of all permissions for a given user."
+					},
+					"response": []
+				},
+				{
+					"name": "List user's topic permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/users/{{user}}/topic-permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user}}",
+								"topic-permissions"
+							]
+						},
+						"description": "A list of all topic permissions for a given user."
+					},
+					"response": []
+				},
+				{
+					"name": "List per-user limits for all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/user-limits",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"user-limits"
+							]
+						},
+						"description": "Lists per-user limits for all users."
+					},
+					"response": []
+				},
+				{
+					"name": "Topic permissions for all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/topic-permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"topic-permissions"
+							]
+						},
+						"description": "A list of all topic permissions for a given user."
+					},
+					"response": []
+				},
+				{
+					"name": "Permissions for all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/permissions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"permissions"
+							]
+						},
+						"description": "A list of all permissions for all users."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual permission of a user and virtual host",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/permissions/{{vhost}}/{{user}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"permissions",
+								"{{vhost}}",
+								"{{user}}"
+							]
+						},
+						"description": "An individual permission of a user and virtual host. To PUT a permission, you will need a body looking something like this:\n\n``` json\n{\"configure\":\".*\",\"write\":\".*\",\"read\":\".*\"}\n```\n\nAll keys are mandatory."
+					},
+					"response": []
+				},
+				{
+					"name": "List per-user limits for a specific user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/user-limits/{{user}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"user-limits",
+								"{{user}}"
+							]
+						},
+						"description": "Lists per-user limits for a specific user."
+					},
+					"response": []
+				},
+				{
+					"name": "Set limit for a user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/user-limits/{{user}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"user-limits",
+								"{{user}}",
+								"{{name}}"
+							]
+						},
+						"description": "Set or delete per-user limit for user. The name URL path element refers to the name of the limit (max-connections, max-channels). Limits are set using a JSON document in the body:\n\n``` json\n{\"value\": 100}\n\n```\n\nExample request:\n\n``` bash\ncurl -4u 'guest:guest' -H 'content-type:application/json' -X PUT localhost:15672/api/user-limits/guest/max-connections -d '{\"value\": 50}'\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete limit for a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/user-limits/{{user}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"user-limits",
+								"{{user}}",
+								"{{name}}"
+							]
+						},
+						"description": "Set or delete per-user limit for user. The name URL path element refers to the name of the limit (max-connections, max-channels). Limits are set using a JSON document in the body:\n\n``` json\n{\"value\": 100}\n\n```\n\nExample request:\n\n``` bash\ncurl -4u 'guest:guest' -H 'content-type:application/json' -X PUT localhost:15672/api/user-limits/guest/max-connections -d '{\"value\": 50}'\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Topic permissions for a user and virtual host",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/topic-permissions/{{vhost}}/{{user}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"topic-permissions",
+								"{{vhost}}",
+								"{{user}}"
+							]
+						},
+						"description": "Topic permissions for a user and virtual host. To PUT a topic permission, you will need a body looking something like this:\n\n``` json\n{\"exchange\":\"amq.topic\",\"write\":\"^a\",\"read\":\".*\"}\n\n```\n\nAll keys are mandatory."
+					},
+					"response": []
+				},
+				{
+					"name": "Topic permissions for a user and virtual host Copy 2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/topic-permissions/{{vhost}}/{{user}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"topic-permissions",
+								"{{vhost}}",
+								"{{user}}"
+							]
+						},
+						"description": "Topic permissions for a user and virtual host. To PUT a topic permission, you will need a body looking something like this:\n\n``` json\n{\"exchange\":\"amq.topic\",\"write\":\"^a\",\"read\":\".*\"}\n\n```\n\nAll keys are mandatory."
+					},
+					"response": []
+				},
+				{
+					"name": "Topic permissions for a user and virtual host Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/topic-permissions/{{vhost}}/{{user}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"topic-permissions",
+								"{{vhost}}",
+								"{{user}}"
+							]
+						},
+						"description": "Topic permissions for a user and virtual host. To PUT a topic permission, you will need a body looking something like this:\n\n``` json\n{\"exchange\":\"amq.topic\",\"write\":\"^a\",\"read\":\".*\"}\n\n```\n\nAll keys are mandatory."
+					},
+					"response": []
+				},
+				{
+					"name": "Details of currently authenticated user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/whoami",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"whoami"
+							]
+						},
+						"description": "Details of the currently authenticated user."
+					},
+					"response": []
+				},
+				{
+					"name": "Lists per-vhost limits for all vhosts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/vhost-limits",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"vhost-limits"
+							]
+						},
+						"description": "Lists per-vhost limits for all vhosts."
+					},
+					"response": []
+				},
+				{
+					"name": "List authentication attempts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/auth/attempts/{{node}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"attempts",
+								"{{node}}"
+							]
+						},
+						"description": "A list of authentication attempts."
+					},
+					"response": []
+				},
+				{
+					"name": "List authentication attempt",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/auth/attempts/{{node}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"attempts",
+								"{{node}}"
+							]
+						},
+						"description": "A list of authentication attempts."
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication attempts by remote address and name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/auth/attempts/{{node}}/source",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"attempts",
+								"{{node}}",
+								"source"
+							]
+						},
+						"description": "A list of authentication attempts by remote address and username."
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication attempts by remote address and name",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/auth/attempts/{{node}}/source",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"attempts",
+								"{{node}}",
+								"source"
+							]
+						},
+						"description": "A list of authentication attempts by remote address and username."
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth2 configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/auth",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						},
+						"description": "/api/auth Details about the OAuth2 configuration. It will return HTTP status 200 with body:\n\n``` json\n{\"enable_uaa\":\"boolean\", \"uaa_client_id\":\"string\", \"uaa_location\":\"string\"}\n```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Connections",
+			"item": [
+				{
+					"name": "List connection channels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/connections/{{name}}/channels",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"connections",
+								"{{name}}",
+								"channels"
+							]
+						},
+						"description": "List of all channels for a given connection."
+					},
+					"response": []
+				},
+				{
+					"name": "List all open channels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/channels",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"channels"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "String",
+									"disabled": true
+								},
+								{
+									"key": "use_regex",
+									"value": "Boolean",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An individual connection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/connections/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"connections",
+								"{{name}}"
+							]
+						},
+						"description": "An individual connection. DELETEing it will close the connection. Optionally set the \"X-Reason\" header when DELETEing to provide a reason."
+					},
+					"response": []
+				},
+				{
+					"name": "List open connections",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/connections",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"connections"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "String",
+									"disabled": true
+								},
+								{
+									"key": "use_regex",
+									"value": "Boolean",
+									"disabled": true
+								}
+							]
+						},
+						"description": "A list of all open connections. Use pagination parameters to filter connections."
+					},
+					"response": []
+				},
+				{
+					"name": "Channel details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/channels/{{channel}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"channels",
+								"{{channel}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "String",
+									"disabled": true
+								},
+								{
+									"key": "use_regex",
+									"value": "Boolean",
+									"disabled": true
+								}
+							]
+						},
+						"description": "A list of all open channels. Use [pagination parameters](https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.8.11/deps/rabbitmq_management/priv/www/api/index.html#pagination) to filter channels."
+					},
+					"response": []
+				},
+				{
+					"name": "List of consumers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/consumers",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"consumers"
+							]
+						},
+						"description": "A list of all consumers."
+					},
+					"response": []
+				},
+				{
+					"name": "List exchanges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/exchanges",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"exchanges"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "Positive integer",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "String",
+									"disabled": true
+								},
+								{
+									"key": "use_regex",
+									"value": "Boolean",
+									"disabled": true
+								}
+							]
+						},
+						"description": "A list of all exchanges. Use [pagination parameters](https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.8.11/deps/rabbitmq_management/priv/www/api/index.html#pagination) to filter exchanges."
+					},
+					"response": []
+				},
+				{
+					"name": "Federation link status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/federation-links",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"federation-links"
+							]
+						},
+						"description": "Provides status for all federation links. Requires the `rabbitmq_federation_management` plugin to be enabled."
+					},
+					"response": []
+				},
+				{
+					"name": "A list of all policies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/policies",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"policies"
+							]
+						},
+						"description": "A list of all policies."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual connection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/connections/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"connections",
+								"{{name}}"
+							]
+						},
+						"description": "List of all channels for a given connection."
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual hosts federation link status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/federation-links/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"federation-links",
+								"{{vhost}}"
+							]
+						},
+						"description": "Provides status for all federation links on the virtual host. Requires the `rabbitmq_federation_management` plugin to be enabled."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bindings",
+			"item": [
+				{
+					"name": "List all bindings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings"
+							]
+						},
+						"description": "A list of all bindings."
+					},
+					"response": []
+				},
+				{
+					"name": "Individual binding between two exchanges",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"vhost\", \"\");",
+									"pm.variables.set(\"source\", \"\");",
+									"pm.variables.set(\"destination\", \"\");",
+									"pm.variables.set(\"props\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/bindings/{{vhost}}/e/{{source}}/e/{{destination}}/{{props}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"bindings",
+								"{{vhost}}",
+								"e",
+								"{{source}}",
+								"e",
+								"{{destination}}",
+								"{{props}}"
+							]
+						},
+						"description": "An individual binding between two exchanges. Similar to the individual binding between an exchange and a queue, above."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Checks",
+			"item": [
+				{
+					"name": "Health checks alarms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/alarms",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"alarms"
+							]
+						},
+						"description": "Responds a 200 OK if there are no alarms in effect in the cluster, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				},
+				{
+					"name": "Health checks local alarms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/local-alarms",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"local-alarms"
+							]
+						},
+						"description": "Responds a 200 OK if there are no local alarms in effect on the target node, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				},
+				{
+					"name": "Check expiration date on certificates for every listener configured to use TLS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/certificate-expiration/{{within}}/{{unit}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"certificate-expiration",
+								"{{within}}",
+								"{{unit}}"
+							]
+						},
+						"description": "Checks the expiration date on the certificates for every listener configured to use TLS. Responds a 200 OK if all certificates are valid (have not expired), otherwise responds with a 503 Service Unavailable.\n\nValid units: days, weeks, months, years. The value of the within argument is the number of units. So, when within is 2 and unit is \"months\", the expiration period used by the check will be the next two months."
+					},
+					"response": []
+				},
+				{
+					"name": "Check active listeners for protocol",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/protocol-listener/{{protocol}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"protocol-listener",
+								"{{protocol}}"
+							]
+						},
+						"description": "Responds a 200 OK if there is an active listener for the given protocol, otherwise responds with a 503 Service Unavailable. Valid protocol names are: amqp091, amqp10, mqtt, stomp, web-mqtt, web-stomp."
+					},
+					"response": []
+				},
+				{
+					"name": "Checks if all virtual hosts are running on the target node",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/virtual-hosts",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"virtual-hosts"
+							]
+						},
+						"description": "Responds a 200 OK if all virtual hosts and running on the target node, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				},
+				{
+					"name": "Checks if there are classic mirrored queues without synchronised mirrors online",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/node-is-mirror-sync-critical",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"node-is-mirror-sync-critical"
+							]
+						},
+						"description": "Checks if there are classic mirrored queues without synchronised mirrors online (queues that would potentially lose data if the target node is shut down). Responds a 200 OK if there are no such classic mirrored queues, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				},
+				{
+					"name": "Checks if there are quorum queues with minimum online quorum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/node-is-quorum-critical",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"node-is-quorum-critical"
+							]
+						},
+						"description": "Checks if there are quorum queues with minimum online quorum (queues that would lose their quorum and availability if the target node is shut down). Responds a 200 OK if there are no such quorum queues, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				},
+				{
+					"name": "Check for active listeners on port",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/health/checks/port-listener/{{port}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"checks",
+								"port-listener",
+								"{{port}}"
+							]
+						},
+						"description": "Responds a 200 OK if there is an active listener on the give port, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				},
+				{
+					"name": "Declares a test queue on target node",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/aliveness-test/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"aliveness-test",
+								"{{vhost}}"
+							]
+						},
+						"description": "Declares a test queue on the target node, then publishes and consumes a message. Intended to be used as a very basic health check. Responds a 200 OK if the check succeeded, otherwise responds with a 503 Service Unavailable."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cluster and Nodes",
+			"item": [
+				{
+					"name": "Overview",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/overview",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"overview"
+							]
+						},
+						"description": "Various random bits of information that describe the whole system."
+					},
+					"response": []
+				},
+				{
+					"name": "Cluster name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/cluster-name",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"cluster-name"
+							]
+						},
+						"description": "Name identifying this RabbitMQ cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Cluster name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/cluster-name",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"cluster-name"
+							]
+						},
+						"description": "Name identifying this RabbitMQ cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "List nodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/nodes",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"nodes"
+							]
+						},
+						"description": "A list of nodes in the RabbitMQ cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Get node details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"name\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/nodes/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"nodes",
+								"{{name}}"
+							],
+							"query": [
+								{
+									"key": "memory",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "binary",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						},
+						"description": "An individual node in the RabbitMQ cluster. Add \"?memory=true\" to get memory statistics, and \"?binary=true\" to get a breakdown of binary memory use (may be expensive if there are many small binaries in the system)."
+					},
+					"response": []
+				},
+				{
+					"name": "Server definitions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/definitions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"definitions"
+							]
+						},
+						"description": "/api/all-configuration (deprecated) The server definitions - exchanges, queues, bindings, users, virtual hosts, permissions, topic permissions, and parameters. Everything apart from messages. POST to upload an existing set of definitions. Note that:\n\n*   The definitions are merged. Anything already existing on the server but not in the uploaded definitions is untouched.\n*   Conflicting definitions on immutable objects (exchanges, queues and bindings) will be ignored. The existing definition will be preserved.\n*   Conflicting definitions on mutable objects will cause the object in the server to be overwritten with the object from the definitions.\n*   In the event of an error you will be left with a part-applied set of definitions.\n    \n\nFor convenience you may upload a file from a browser to this URI (i.e. you can use `multipart/form-data` as well as `application/json`) in which case the definitions should be uploaded as a form field named \"file\"."
+					},
+					"response": []
+				},
+				{
+					"name": "Server definitions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/definitions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"definitions"
+							]
+						},
+						"description": "/api/all-configuration (deprecated) The server definitions - exchanges, queues, bindings, users, virtual hosts, permissions, topic permissions, and parameters. Everything apart from messages. POST to upload an existing set of definitions. Note that:\n\n*   The definitions are merged. Anything already existing on the server but not in the uploaded definitions is untouched.\n*   Conflicting definitions on immutable objects (exchanges, queues and bindings) will be ignored. The existing definition will be preserved.\n*   Conflicting definitions on mutable objects will cause the object in the server to be overwritten with the object from the definitions.\n*   In the event of an error you will be left with a part-applied set of definitions.\n    \n\nFor convenience you may upload a file from a browser to this URI (i.e. you can use `multipart/form-data` as well as `application/json`) in which case the definitions should be uploaded as a form field named \"file\"."
+					},
+					"response": []
+				},
+				{
+					"name": "List extensions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/extensions",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"extensions"
+							]
+						},
+						"description": "A list of extensions to the management plugin."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Policies",
+			"item": [
+				{
+					"name": "An individual policy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/policies/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"policies",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "An individual policy. To PUT a policy, you will need a body looking something like this:\n\n``` json\n{\"pattern\":\"^amq.\", \"definition\": {\"federation-upstream-set\":\"all\"}, \"priority\":0, \"apply-to\": \"all\"}\n\n```\n\npattern and definition are mandatory, priority and apply-to are optional."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual policy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/policies/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"policies",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "An individual policy. To PUT a policy, you will need a body looking something like this:\n\n``` json\n{\"pattern\":\"^amq.\", \"definition\": {\"federation-upstream-set\":\"all\"}, \"priority\":0, \"apply-to\": \"all\"}\n\n```\n\npattern and definition are mandatory, priority and apply-to are optional."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual policy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/policies/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"policies",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "An individual policy."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual operator policy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/operator-policies/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"operator-policies",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "An individual operator policy."
+					},
+					"response": []
+				},
+				{
+					"name": "An individual operator policy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/operator-policies/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"operator-policies",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "An individual operator policy. To PUT a policy, you will need a body looking something like this:\n\n```\n{\"pattern\":\"^amq.\", \"definition\": {\"expires\":100}, \"priority\":0, \"apply-to\": \"queues\"}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "An individual operator policy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/operator-policies/{{vhost}}/{{name}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"operator-policies",
+								"{{vhost}}",
+								"{{name}}"
+							]
+						},
+						"description": "An individual operator policy."
+					},
+					"response": []
+				},
+				{
+					"name": "A list of all operator policy overrides",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/operator-policies",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"operator-policies"
+							]
+						},
+						"description": "A list of all operator policy overrides."
+					},
+					"response": []
+				},
+				{
+					"name": "Virtual host list of policies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/policies/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"policies",
+								"{{vhost}}"
+							]
+						},
+						"description": "A list of all policies in a given virtual host."
+					},
+					"response": []
+				},
+				{
+					"name": "A list of all operator policy overrides in a given virtual host.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{broker}}/api/operator-policies/{{vhost}}",
+							"host": [
+								"{{broker}}"
+							],
+							"path": [
+								"api",
+								"operator-policies",
+								"{{vhost}}"
+							]
+						},
+						"description": "A list of all operator policy overrides in a given virtual host."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "Training2022Rabbit*!AWSome",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

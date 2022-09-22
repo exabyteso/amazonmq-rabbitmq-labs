@@ -6,7 +6,7 @@ def main():
     params = pika.URLParameters(url)
     connection = pika.BlockingConnection(params)
     channel = connection.channel()
-    queue = "enter-your-@handlehere"
+    queue = "rabbitmqtraining-@handlehere"
     channel.queue_declare(queue=queue)
 
     def callback(ch, method, properties, body):

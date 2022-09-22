@@ -11,7 +11,7 @@ amqp.connect('amqps://workShopUser:workShopUser@b-1eafccb7-79fe-47b2-8864-e02b74
             throw error1;
         }
 
-        var queue = 'enter-your-@handlehere';
+        var queue = 'rabbitmqtraining-@handlehere';
         var msg = 'Hello World!';
 
         channel.assertQueue(queue, {
